@@ -1,0 +1,63 @@
+:root {
+    --verde-oscuro: #295730;
+    --rojo: #A81B36;
+    --marron: #5E3827;
+    --dorado: #AC8354;
+    --crema: #FBF2E7;
+}
+
+.bg-crema {
+    background-color: var(--crema) !important;
+}
+
+.text-rojo {
+    color: var(--rojo) !important;
+}
+
+.btn-rojo {
+    background-color: var(--rojo);
+    border-color: var(--rojo);
+    color: white;
+}
+
+.btn-rojo:hover {
+    background-color: #881327;
+    border-color: #881327;
+}
+
+/* Reset general para evitar scroll */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+body
+.top svg,
+.bottom svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.top, .bottom {
+  flex-shrink: 0;
+  line-height: 0;
+}
+
+.text-marron {
+  color: --marron !important;
+}
+
+.border-marron {
+  border-color: var(--marron) !important;
+}
+
+.btn-marron:hover {
+  background-color: var(--marron);
+}
+
+.btn-dorado {
+  background-color: var(--dorado);
+}
