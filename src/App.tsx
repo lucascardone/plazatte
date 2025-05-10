@@ -4,8 +4,6 @@ import LoginCarritoScreen from "./screens/LoginCarritoScreen";
 import './styles/paleta.css';
 import HomeScreen from "./screens/HomeScreen";
 
-
-
 function App() {
   return (
     <BrowserRouter>
