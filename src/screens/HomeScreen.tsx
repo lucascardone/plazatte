@@ -37,7 +37,7 @@ function HomeScreen() {
                     </a>
                 </p>
             </div>
-            <div className="top">
+            <div className="bottom">
                 <OlasFooter color={palette.verde} />
             </div>
         </div>

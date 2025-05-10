@@ -34,16 +34,16 @@ html, body {
   height: 100%;
 }
 body
-.top svg,
-.bottom svg {
+.top svg, .bottom svg {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
 }
 
 .top, .bottom {
   flex-shrink: 0;
   line-height: 0;
+  height: 10vh;
 }
 
 .text-marron {
