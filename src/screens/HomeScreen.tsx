@@ -2,10 +2,21 @@ import { useNavigate } from "react-router-dom";
 import OlasHead from "../componentes/svgs/OlasHead";
 import Logo from "../componentes/svgs/Logo";
 import OlasFooter from "../componentes/svgs/OlasFooter";
-
 import { palette } from "../styles/constants";
+import { useEffect } from "react";
+
 function HomeScreen() {
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const setVh = () => {
+            const vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        };
+        setVh();
+        window.addEventListener('resize', setVh);
+        return () => window.removeEventListener('resize', setVh);
+    }, []);
 
     return (
         <div className="home-layout bg-crema text-center">

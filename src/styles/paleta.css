@@ -75,3 +75,28 @@ html, body {
 .btn-dorado {
   background-color: var(--dorado);
 }
+
+:root {
+  --vh: 1vh;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.home-layout {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: calc(var(--vh, 1vh) * 100);
+}
+
+.header, .footer {
+  line-height: 0;
+}
+
+.main {
+  overflow: hidden;
+}
