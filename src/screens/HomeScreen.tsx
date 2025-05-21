@@ -21,21 +21,21 @@ function HomeScreen() {
             <div className="mb-4">
                 <Logo />
             </div>
-            <p className="mb-4 fs-5 fw-medium">
+            <p className="mt-3 mb-5 fs-5 fw-medium">
                 Encuentra carritos de café<br />
                 locales y explora lo que ofrecen
             </p>
             <button
-                className="btn btn-rojo fs-5 fw-bold p-3 mb-3 w-100" style={{ borderRadius: "13px" }}
+                className="btn btn-rojo fs-5 fw-bold p-3 mt-5 mb-3 w-100" style={{ borderRadius: "13px" }}
                 onClick={() => navigate("/explorar")}
             >
                 Explora carritos cercanos a ti
             </button>
-            <p className="small">
+            <p className="fs-6">
                 ¿Tenés un carrito?{" "}
                 <a
                     href="#"
-                    className="text-rojo fw-bold"
+                    className="text-rojo fw-bold text-decoration-none"
                     onClick={(e) => {
                         e.preventDefault();
                         navigate("/registrar");
