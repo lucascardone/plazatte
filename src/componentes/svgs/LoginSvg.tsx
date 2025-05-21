@@ -1,10 +1,8 @@
 function LoginSvg() {
     return (
-        <svg width="127" height="127" viewBox="0 0 127 127" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="64" cy="63" r="61" fill="#AC8354" />
-            <circle cx="63.5" cy="51.5" r="22.5" fill="#5E3827" />
-            <rect x="24" y="66" width="78" height="58" rx="29" fill="#5E3827" />
-            <circle cx="63.5" cy="63.5" r="60.5" stroke="#FBF2E7" stroke-width="6" />
+        <svg width="105" height="104" viewBox="0 0 105 104" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="52.583" cy="52" r="49.5" stroke="#5E3827" stroke-width="5" />
+            <path d="M75.9164 78.25V72.4167C75.9164 69.3225 74.6873 66.355 72.4993 64.1671C70.3114 61.9792 67.3439 60.75 64.2498 60.75H40.9164C37.8222 60.75 34.8548 61.9792 32.6668 64.1671C30.4789 66.355 29.2498 69.3225 29.2498 72.4167V78.25M64.2498 37.4167C64.2498 43.86 59.0264 49.0833 52.5831 49.0833C46.1398 49.0833 40.9164 43.86 40.9164 37.4167C40.9164 30.9733 46.1398 25.75 52.5831 25.75C59.0264 25.75 64.2498 30.9733 64.2498 37.4167Z" stroke="#5E3827" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
     );
 }

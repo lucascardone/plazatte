@@ -8,11 +8,12 @@ function LoginCarritoScreen() {
   return (
     <div className="d-flex flex-column min-vh-100 bg-crema">
       <div className="flex-grow-1 d-flex flex-column align-items-center text-center px-4 w-100">
-        <h1 className="text-rojo fw-bold text-center my-4">Registra tu carrito</h1>
-
+        <hr className="mb-2"/>
+        <h1 className="text-marron fw-bold text-center mt-5 mb-5">Registra tu carrito</h1>
+        <hr className="mb-2"/>
         <LoginSvg />
-
-        <form className="w-100 mt-4" style={{ maxWidth: '400px' }}>
+        <hr className="mb-3"/>
+        <form className="mt-4" style={{ width: '75%' }}>
           <div className="mb-3 text-start">
             <CustomTextField label="Nombre" />
           </div>
@@ -24,9 +25,6 @@ function LoginCarritoScreen() {
           </div>
           <button type="submit" className="btn btn-dorado rounded-pill px-4 py-3 text-white w-50 mt-5">Enviar</button>
         </form>
-      </div>
-      <div className="bottom">
-        <OlasFooter color={palette.rojo} />
       </div>
     </div>
   );
