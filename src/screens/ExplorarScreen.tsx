@@ -1,97 +1,147 @@
 import PlazaMap from "../componentes/PlazaMap";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { palette } from "../styles/constants";
 
+interface Plaza {
+  id: string;
+  nombre: string;
+  coordenadas: {
+    lat: number;
+    lng: number;
+  };
+}
+
+const plazas: Plaza[] = [
+  {
+    id: 'italia',
+    nombre: 'Plaza Italia',
+    coordenadas: {
+      lat: -32.891649,
+      lng: -68.848619
+    }
+  },
+  {
+    id: 'españa',
+    nombre: 'Plaza España',
+    coordenadas: {
+      lat: -32.893065,
+      lng: -68.842307
+    }
+  }
+];
+
 function ExplorarScreen() {
-  const [showCarritos, setShowCarritos] = useState(false);
+  const navigate = useNavigate();
+  const [selectedPlaza, setSelectedPlaza] = useState<Plaza>(plazas[0]);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   return (
     <div className="min-vh-100 position-relative" style={{ backgroundColor: '#fff' }}>
-      {/* Header fijo */}
-      <div 
-        style={{ 
+      <div
+        style={{
           backgroundColor: palette.verde,
-          padding: '1rem',
           position: 'fixed',
           top: 0,
           left: 0,
           right: 0,
-          zIndex: 1000
+          zIndex: 1000,
+          padding: '2rem'
         }}
       >
-        <h1 className="text-white h5 mb-0 text-center">Plaza Italia</h1>
-        <button 
-          className="btn text-white border-0 d-flex align-items-center position-relative w-100 mt-2"
-          style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}
-        >
-          <span className="flex-grow-1 text-start ps-2">Otras plazas</span>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M6 9l6 6 6-6" />
-          </svg>
-        </button>
+        <h1 className="text-white mb-0 text-center">{selectedPlaza.nombre}</h1>
+      </div>
+      <div
+        style={{
+          position: 'fixed',
+          top: 'calc(4rem + 2rem)', 
+          left: 0,
+          right: 0,
+          zIndex: 999
+        }}
+      >
+        <div className="position-relative">
+          <button
+            className="btn w-100 d-flex align-items-center justify-content-center gap-5"
+            style={{
+              backgroundColor: 'rgba(251, 242, 231, 0.95)',
+              padding: '0.75rem 1rem',
+              border: 'none',
+              borderTop: '1px solid rgba(94, 56, 39, 0.1)',
+              borderBottom: '1px solid rgba(94, 56, 39, 0.1)'
+            }}
+            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+          >
+            <span className="fw-bold" style={{ color: '#AC8354' }}>Otras plazas</span>
+            <svg
+              width="40"
+              height="40"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#AC8354"
+              strokeWidth="2"
+              style={{
+                transform: isDropdownOpen ? 'rotate(180deg)' : 'rotate(0)',
+                transition: 'transform 0.3s ease',
+                marginTop: '2px'
+              }}
+            >
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </button>
+
+          {isDropdownOpen && (
+            <div
+              className="position-absolute w-100 start-0 shadow-sm"
+              style={{
+                backgroundColor: 'rgba(251, 242, 231, 0.95)',
+                zIndex: 998
+              }}
+            >
+              {plazas.map(plaza => (
+                <button
+                  key={plaza.id}
+                  className="btn w-100 text-start"
+                  style={{
+                    color: '#5E3827',
+                    padding: '0.75rem 1rem',
+                    border: 'none',
+                    borderBottom: '1px solid rgba(94, 56, 39, 0.1)'
+                  }}
+                  onClick={() => {
+                    setSelectedPlaza(plaza);
+                    setIsDropdownOpen(false);
+                  }}
+                >
+                  {plaza.nombre}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
 
-      {/* Mapa */}
-      <div style={{ 
+      <div style={{
         height: '100vh',
         width: '100%',
-        marginTop: '88px' // Altura del header
+        marginTop: 'calc(8rem + 3.5rem)' // (header height + padding) + (selector height)
       }}>
-        <PlazaMap />
+        <PlazaMap selectedPlaza={selectedPlaza} />
       </div>
 
       {/* Botón flotante inferior */}
       <button
-        className="btn position-fixed bottom-0 start-50 translate-middle-x mb-4 px-4 py-2 text-white"
-        style={{ 
+        className="btn position-fixed bottom-0 start-50 translate-middle-x px-4 py-3 text-white"
+        style={{
           backgroundColor: palette.verde,
           borderRadius: '50px',
-          zIndex: 1000
+          zIndex: 1000,
+          marginBottom: '5.5rem',
         }}
-        onClick={() => setShowCarritos(true)}
+        onClick={() => navigate(`/plaza/${selectedPlaza.id}/info`)}
       >
         + sobre los carritos
       </button>
-
-      {/* Panel de carritos */}
-      {showCarritos && (
-        <div 
-          className="position-fixed bottom-0 start-0 w-100 bg-white p-4 rounded-top shadow"
-          style={{ 
-            zIndex: 1001,
-            maxHeight: '70vh',
-            overflowY: 'auto'
-          }}
-        >
-          <div className="d-flex justify-content-between align-items-center mb-3">
-            <h2 className="h6 mb-0">Carritos en esta plaza</h2>
-            <button 
-              className="btn btn-link p-0 text-dark"
-              onClick={() => setShowCarritos(false)}
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M18 6L6 18M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-          <div className="card border-0 shadow-sm mb-3">
-            <div className="card-body">
-              <h3 className="h6 text-marron mb-2">El Cafecito de Juan</h3>
-              <p className="small text-muted mb-0">
-                Café de especialidad, medialunas y más
-              </p>
-            </div>
-          </div>
-          <div className="card border-0 shadow-sm mb-3">
-            <div className="card-body">
-              <h3 className="h6 text-marron mb-2">Dulces Momentos</h3>
-              <p className="small text-muted mb-0">
-                Café, té y pastelería artesanal
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

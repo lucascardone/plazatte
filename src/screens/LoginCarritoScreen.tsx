@@ -4,7 +4,6 @@ import CustomTextField from "../componentes/CustomTextField";
 import { useState, useEffect } from "react";
 
 function LoginCarritoScreen() {
-  // Ajuste para vh real en móviles
   useEffect(() => {
     const setVh = () => {
       const vh = window.innerHeight * 0.01;

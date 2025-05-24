@@ -4,6 +4,7 @@ import LoginCarritoScreen from "./screens/LoginCarritoScreen";
 import './styles/paleta.css';
 import HomeScreen from "./screens/HomeScreen";
 import ExplorarScreen from "./screens/ExplorarScreen";
+import PlazaInfoScreen from "./screens/PlazaInfoScreen";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/" element={<HomeScreen />} />
         <Route path="/registrar" element={<LoginCarritoScreen />} />
         <Route path="/explorar" element={<ExplorarScreen />} />
+        <Route path="/plaza/:plazaId/info" element={<PlazaInfoScreen />} />
       </Routes>
     </BrowserRouter>
   );

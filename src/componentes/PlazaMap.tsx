@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { Icon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -10,47 +9,27 @@ interface Plaza {
     lat: number;
     lng: number;
   };
-  imagen: string;
 }
 
-const plazas: Plaza[] = [
-  {
-    id: 'italia',
-    nombre: 'Plaza Italia',
-    coordenadas: {
-      lat: -32.889461,
-      lng: -68.844794
-    },
-    imagen: '/plaza_italia.jpg'
-  },
-  {
-    id: 'españa',
-    nombre: 'Plaza España',
-    coordenadas: {
-      lat: -32.890720,
-      lng: -68.843957
-    },
-    imagen: '/plaza_españa.jpg' 
-  },
-  // Puedes agregar más plazas aquí
-];
+interface PlazaMapProps {
+  selectedPlaza: Plaza;
+}
 
 const customIcon = new Icon({
-  iconUrl: '/marker-icon.svg',
-  iconSize: [30, 30],
-  iconAnchor: [15, 30],
-  popupAnchor: [0, -30],
+  iconUrl: '/plaza-marker.svg',
+  iconSize: [24, 32],
+  iconAnchor: [12, 32],
+  popupAnchor: [0, -32],
 });
 
-function PlazaMap() {
-  const [selectedPlaza] = useState<Plaza>(plazas[0]);
-
+function PlazaMap({ selectedPlaza }: PlazaMapProps) {
   return (
     <MapContainer 
+      key={`${selectedPlaza.coordenadas.lat}-${selectedPlaza.coordenadas.lng}`}
       center={selectedPlaza.coordenadas} 
       zoom={16} 
-      style={{ height: '100vh', width: '100%' }}
-      zoomControl={true}
+      style={{ height: '100%', width: '100%' }}
+      zoomControl={false}
       scrollWheelZoom={false}
     >
       <TileLayer
