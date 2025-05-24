@@ -1,94 +1,129 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { palette } from '../styles/constants';
-import OlasHead from '../componentes/svgs/OlasHead';
+import OndaVector from '../componentes/svgs/OndaVector';
 
 function PlazaInfoScreen() {
-  const { plazaId } = useParams();
-  const navigate = useNavigate();
+    const { plazaId } = useParams();
+    const navigate = useNavigate();
 
-  const carritos = [
-    {
-      id: 1,
-      nombre: "El Cafecito de Juan",
-      descripcion: "Café de especialidad, medialunas y más",
-      horario: "8:00 - 20:00",
-      dias: "Lunes a Sábado",
-      productos: ["Café", "Medialunas", "Jugos naturales"]
-    },
-    {
-      id: 2,
-      nombre: "Dulces Momentos",
-      descripcion: "Café, té y pastelería artesanal",
-      horario: "9:00 - 19:00",
-      dias: "Martes a Domingo",
-      productos: ["Café", "Té", "Tortas", "Cookies"]
+    const plazasInfo = {
+        'españa': {
+            carritos: [
+                {
+                    id: 1,
+                    nombre: "Café Aróma",
+                    horario: "7:00 AM a 7:00 PM",
+                    menu: [
+                        { item: "Café Expresso", precio: 1000 },
+                        { item: "Latte", precio: 900 },
+                        { item: "Croissant", precio: 800 }
+                    ],
+                    opiniones: [
+                        { nombre: "Ana", comentario: "Muy lindo", estrellas: 5 },
+                        { nombre: "Luis", comentario: "Buen servicio", estrellas: 4 }
+                    ],
+                    imagen: "/plaza_españa.jpg"
+                }
+            ]
+        },
+        'italia': {
+            carritos: [
+                {
+                    id: 1,
+                    nombre: "Dulce Café",
+                    horario: "8:00 AM a 8:00 PM",
+                    menu: [
+                        { item: "Café Americano", precio: 900 },
+                        { item: "Cappuccino", precio: 1100 },
+                        { item: "Medialuna", precio: 700 }
+                    ],
+                    opiniones: [
+                        { nombre: "María", comentario: "Excelente café", estrellas: 5 },
+                        { nombre: "Juan", comentario: "Muy rico todo", estrellas: 5 }
+                    ],
+                    imagen: "/plaza_italia.jpg"
+                }
+            ]
+        }
+    };
+
+    const plazaData = plazaId ? plazasInfo[plazaId as keyof typeof plazasInfo] : null;
+
+    if (!plazaData) {
+        return <div>Plaza no encontrada</div>;
     }
-  ];
 
-  return (
-    <div className="min-vh-100 bg-crema">
-      <div className="position-relative">
-        <div className="bg-white py-3 px-4 d-flex justify-content-between align-items-center">
-          <button 
-            className="btn p-0"
-            onClick={() => navigate(-1)}
-          >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={palette.marron} strokeWidth="2">
-              <path d="M15 18L9 12L15 6" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </button>
-          <h1 className="text-marron h5 mb-0 fw-bold">Carritos en esta plaza</h1>
-          <div style={{ width: 24 }}></div>
-        </div>
-        <div style={{ marginTop: "-1px" }}>
-          <OlasHead color={palette.crema} />
-        </div>
-      </div>
+    const carritos = plazaData.carritos;
 
-      {/* Lista de carritos */}
-      <div className="container px-4 mt-4">
-        {carritos.map(carrito => (
-          <div key={carrito.id} className="card border-0 shadow-sm mb-4">
-            <div className="card-body">
-              <h3 className="h5 text-marron mb-2">{carrito.nombre}</h3>
-              <p className="text-muted mb-3">{carrito.descripcion}</p>
-              
-              <div className="mb-2">
-                <small className="text-marron fw-bold">Horario:</small>
-                <br />
-                <small className="text-muted">{carrito.horario}</small>
-              </div>
-              
-              <div className="mb-3">
-                <small className="text-marron fw-bold">Días:</small>
-                <br />
-                <small className="text-muted">{carrito.dias}</small>
-              </div>
-              
-              <div>
-                <small className="text-marron fw-bold">Productos:</small>
-                <div className="mt-2">
-                  {carrito.productos.map((producto, index) => (
-                    <span 
-                      key={index}
-                      className="badge me-2 mb-2"
-                      style={{ 
-                        backgroundColor: 'rgba(94, 56, 39, 0.1)',
-                        color: palette.marron,
-                        padding: '0.5rem 1rem'
-                      }}
-                    >
-                      {producto}
-                    </span>
-                  ))}
+    return (
+        <div style={{ backgroundColor: '#F5E6D3' }}>
+            {carritos.map(carrito => (
+                <div key={carrito.id}>
+                    <div className="position-relative mb-4">
+                        <div className="mb-5">
+                            <div className="position-relative">
+                                <img
+                                    src={carrito.imagen}
+                                    alt={carrito.nombre}
+                                    className="w-100"
+                                    style={{ height: '300px', objectFit: 'cover' }}
+                                />
+                                <div
+                                    className="position-absolute"
+                                    style={{
+                                        bottom: '2rem',
+                                        left: '50%',
+                                        transform: 'translateX(-50%)',
+                                        backgroundColor: 'rgba(251, 242, 231, 0.9)',
+                                        padding: '1.5rem 2rem',
+                                        textAlign: 'center',
+                                        minWidth: '280px'
+                                    }}
+                                >
+                                    <h2 className="text-marron mb-2 fw-bolder">{carrito.nombre}</h2>
+                                    <p className="text-marron mb-0">Abierto de:</p>
+                                    <p className="text-marron mb-0">{carrito.horario}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="container px-4 position-relative" style={{ overflow: 'hidden', minHeight: 500 }}>
+                            <div style={{ position: 'absolute', top: 0, right: 0, height: '100%', width: '80%', zIndex: 0, pointerEvents: 'none' }}>
+                                <OndaVector />
+                            </div>
+                            <div className="position-relative mb-5" style={{ zIndex: 1, marginRight: '3rem' }}>
+                                <h2 className="h3 mb-4 fw-bold" style={{ color: '#5E3827' }}>Menú</h2>
+                                {carrito.menu.map((item, index) => (
+                                    <div key={index} className="d-flex align-items-center mb-3" style={{ fontWeight: 500 }}>
+                                        <span style={{ color: palette.marron, whiteSpace: 'nowrap' }}>{item.item}</span>
+                                        <span style={{ flex: 1, borderBottom: '1.5px dotted #AC8354', margin: '0 10px' }}></span>
+                                        <span style={{ color: palette.marron, whiteSpace: 'nowrap' }}>${item.precio}</span>
+                                    </div>
+                                ))}
+                            </div>
+                            <div className="position-relative">
+                                <h2 className="h3 mb-4 fw-bold" style={{ color: palette.marron }}>Opiniones</h2>
+                                {carrito.opiniones.map((opinion, index) => (
+                                    <div key={index} className="mb-4">
+                                        <div className="d-flex justify-content-between align-items-start mb-1">
+                                            <div>
+                                                <p className="mb-0 fs-3" style={{ color: palette.marron }}>{opinion.nombre}</p>
+                                                <p className="small mb-0" style={{ color: palette.marron }}>{opinion.comentario}</p>
+                                            </div>
+                                            <div>
+                                                {[...Array(opinion.estrellas)].map((_, i) => (
+                                                    <span key={i} style={{ color: palette.marron, fontSize: '2rem' }}>★</span>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+            ))}
+        </div>
+    );
 }
 
 export default PlazaInfoScreen;
