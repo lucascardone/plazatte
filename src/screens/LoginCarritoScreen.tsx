@@ -1,6 +1,7 @@
 import LoginSvg from "../componentes/svgs/LoginSvg";
 import '../styles/paleta.css';
 import CustomTextField from "../componentes/CustomTextField";
+import PlazaMap from "../componentes/PlazaMap";
 import { useState } from "react";
 
 function LoginCarritoScreen() {
@@ -39,10 +40,14 @@ function LoginCarritoScreen() {
           width: '90%',
           maxWidth: '400px',
           backgroundColor: 'rgba(251, 242, 231, 0.9)', // crema translúcido
+          overflowY: 'auto'
         }}
       >
-        <h1 className="text-marron fw-bold" style={{ marginTop: '4rem', marginBottom: '4rem'}}>Registra tu carrito</h1>
+        <h1 className="text-marron fw-bold" style={{ marginTop: '2rem', marginBottom: '2rem'}}>Registra tu carrito</h1>
         <LoginSvg />
+        <div style={{ marginTop: '2rem', marginBottom: '2rem' }}>
+          <PlazaMap />
+        </div>
         <form style={{ marginTop: '3.5rem' }}>
           <div className="mb-3 text-start">
             <CustomTextField 
