@@ -1,10 +1,10 @@
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { palette } from '../styles/constants';
 import OndaVector from '../componentes/svgs/OndaVector';
 
 function PlazaInfoScreen() {
     const { plazaId } = useParams();
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const plazasInfo = {
         'españa': {
