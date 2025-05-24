@@ -1,7 +1,6 @@
 import LoginSvg from "../componentes/svgs/LoginSvg";
 import '../styles/paleta.css';
 import CustomTextField from "../componentes/CustomTextField";
-import PlazaMap from "../componentes/PlazaMap";
 import { useState } from "react";
 
 function LoginCarritoScreen() {
@@ -45,9 +44,6 @@ function LoginCarritoScreen() {
       >
         <h1 className="text-marron fw-bold" style={{ marginTop: '2rem', marginBottom: '2rem'}}>Registra tu carrito</h1>
         <LoginSvg />
-        <div style={{ marginTop: '2rem', marginBottom: '2rem' }}>
-          <PlazaMap />
-        </div>
         <form style={{ marginTop: '3.5rem' }}>
           <div className="mb-3 text-start">
             <CustomTextField 
