@@ -86,8 +86,8 @@ function PlazaInfoScreen() {
                                 </div>
                             </div>
                         </div>
-                        <div className="container px-4 position-relative" style={{ overflow: 'hidden', minHeight: 500 }}>
-                            <div style={{ position: 'absolute', top: 0, right: 0, height: '100%', width: '80%', zIndex: 0, pointerEvents: 'none' }}>
+                        <div className="px-4 position-relative" style={{ overflow: 'hidden', minHeight: 500 }}>
+                            <div style={{ position: 'absolute', top: 0, right: 0, height: '100%', width: '70%', zIndex: 0, pointerEvents: 'none' }}>
                                 <OndaVector />
                             </div>
                             <div className="position-relative mb-5" style={{ zIndex: 1, marginRight: '3rem' }}>
