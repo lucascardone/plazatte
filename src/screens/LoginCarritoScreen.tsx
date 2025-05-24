@@ -1,9 +1,20 @@
 import LoginSvg from "../componentes/svgs/LoginSvg";
 import '../styles/paleta.css';
 import CustomTextField from "../componentes/CustomTextField";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function LoginCarritoScreen() {
+  // Ajuste para vh real en móviles
+  useEffect(() => {
+    const setVh = () => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    };
+    setVh();
+    window.addEventListener('resize', setVh);
+    return () => window.removeEventListener('resize', setVh);
+  }, []);
+
   const [formData, setFormData] = useState({
     nombre: '',
     email: '',
@@ -25,11 +36,12 @@ function LoginCarritoScreen() {
 
   return (
     <div
-      className="d-flex justify-content-center align-items-center min-vh-100"
+      className="d-flex justify-content-center align-items-center"
       style={{
         backgroundImage: `url('/plaza_españa.jpg')`, 
         backgroundSize: 'cover',
         backgroundPosition: 'center',
+        height: 'calc(var(--vh, 1vh) * 100)',
       }}
     >
       <div
@@ -39,7 +51,8 @@ function LoginCarritoScreen() {
           width: '90%',
           maxWidth: '400px',
           backgroundColor: 'rgba(251, 242, 231, 0.9)', // crema translúcido
-          overflowY: 'auto'
+          overflowY: 'hidden',
+          maxHeight: 'calc(var(--vh, 1vh) * 90)'
         }}
       >
         <h1 className="text-marron fw-bold" style={{ marginTop: '2rem', marginBottom: '2rem'}}>Registra tu carrito</h1>
