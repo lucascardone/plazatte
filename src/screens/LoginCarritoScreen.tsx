@@ -1,29 +1,87 @@
 import LoginSvg from "../componentes/svgs/LoginSvg";
 import '../styles/paleta.css';
 import CustomTextField from "../componentes/CustomTextField";
-import OlasFooter from "../componentes/svgs/OlasFooter";
-import { palette } from "../styles/constants";
+import { useState } from "react";
 
 function LoginCarritoScreen() {
+  const [formData, setFormData] = useState({
+    nombre: '',
+    email: '',
+    telefono: ''
+  });
+
+  const isFormComplete = () => {
+    return formData.nombre.trim() !== '' && 
+           formData.email.trim() !== '' && 
+           formData.telefono.trim() !== '';
+  };
+
+  const handleInputChange = (field: string, value: string) => {
+    setFormData(prev => ({
+      ...prev,
+      [field]: value
+    }));
+  };
+
   return (
-    <div className="d-flex flex-column min-vh-100 bg-crema">
-      <div className="flex-grow-1 d-flex flex-column align-items-center text-center px-4 w-100">
-        <hr className="mb-2"/>
-        <h1 className="text-marron fw-bold text-center mt-5 mb-5">Registra tu carrito</h1>
-        <hr className="mb-2"/>
+    <div
+      className="d-flex justify-content-center align-items-center min-vh-100"
+      style={{
+        backgroundImage: `url('../../public/plaza_españa.jpg')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+    >
+      <div
+        className="p-4 text-center"
+        style={{
+          height: '90vh',
+          width: '90%',
+          maxWidth: '400px',
+          backgroundColor: 'rgba(251, 242, 231, 0.9)', // crema translúcido
+        }}
+      >
+        <h1 className="text-marron fw-bold" style={{ marginTop: '4rem', marginBottom: '4rem'}}>Registra tu carrito</h1>
         <LoginSvg />
-        <hr className="mb-3"/>
-        <form className="mt-4" style={{ width: '75%' }}>
+        <form style={{ marginTop: '3.5rem' }}>
           <div className="mb-3 text-start">
-            <CustomTextField label="Nombre" />
+            <CustomTextField 
+              label="Nombre" 
+              value={formData.nombre}
+              onChange={(e) => handleInputChange('nombre', e.target.value)}
+            />
           </div>
           <div className="mb-3 text-start">
-            <CustomTextField label="Email" />
+            <CustomTextField 
+              label="Email" 
+              value={formData.email}
+              onChange={(e) => handleInputChange('email', e.target.value)}
+            />
           </div>
           <div className="mb-4 text-start">
-            <CustomTextField label="Teléfono" />
+            <CustomTextField 
+              label="Teléfono" 
+              value={formData.telefono}
+              onChange={(e) => handleInputChange('telefono', e.target.value)}
+            />
           </div>
-          <button type="submit" className="btn btn-dorado rounded-pill px-4 py-3 text-white w-50 mt-5">Enviar</button>
+          <button
+            type="submit"
+            className="btn rounded-pill px-4 py-3 w-50 fw-bold"
+            style={{ 
+              marginTop: '4rem',
+              backgroundColor: 'transparent',
+              color: '#AC8354',
+              border: '4px solid #AC8354',
+              transition: 'all 0.3s ease',
+              ...(isFormComplete() && {
+                backgroundColor: '#AC8354',
+                color: 'white'
+              })
+            }}
+          >
+            Enviar
+          </button>
         </form>
       </div>
     </div>
