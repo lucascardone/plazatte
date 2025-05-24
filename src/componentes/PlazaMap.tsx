@@ -21,7 +21,7 @@ const plazas: Plaza[] = [
       lat: -32.889461,
       lng: -68.844794
     },
-    imagen: '../../public/plaza_italia.jpg'
+    imagen: '/plaza_italia.jpg'
   },
   {
     id: 'españa',
@@ -30,7 +30,7 @@ const plazas: Plaza[] = [
       lat: -32.890720,
       lng: -68.843957
     },
-    imagen: '../../public/plaza_españa.jpg'
+    imagen: '/plaza_españa.jpg' 
   },
   // Puedes agregar más plazas aquí
 ];

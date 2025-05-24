@@ -27,7 +27,7 @@ function LoginCarritoScreen() {
     <div
       className="d-flex justify-content-center align-items-center min-vh-100"
       style={{
-        backgroundImage: `url('../../public/plaza_españa.jpg')`,
+        backgroundImage: `url('/plaza_españa.jpg')`, 
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
