@@ -62,9 +62,9 @@ function PlazaInfoScreen() {
          <div style={{
             position: 'absolute',
             top: 0,
-            right: '-50%',
-            width: '105%',
-            height: '150%',
+            right: '6%',
+            width: '50%',
+            height: '50%',
             zIndex: 0,
             pointerEvents: 'none',
             transition: 'transform 0.1s ease-out'
