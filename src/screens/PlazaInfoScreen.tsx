@@ -1,10 +1,21 @@
 import { useParams } from 'react-router-dom';
 import { palette } from '../styles/constants';
 import OndaVector from '../componentes/svgs/OndaVector';
+import Logo from '../componentes/svgs/Logo';
+import { useEffect, useState } from 'react';
 
 function PlazaInfoScreen() {
     const { plazaId } = useParams();
-    // const navigate = useNavigate();
+    const [scrollY, setScrollY] = useState(0);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrollY(window.scrollY);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     const plazasInfo = {
         'españa': {
@@ -54,9 +65,25 @@ function PlazaInfoScreen() {
     }
 
     const carritos = plazaData.carritos;
-
     return (
-        <div style={{ backgroundColor: '#F5E6D3' }}>
+        <div style={{ backgroundColor: '#F5E6D3', minHeight: '100vh', height: '100vh', overflowY: 'auto', position: 'relative' }}>
+            {/* Fondo decorativo OndaVector con efecto parallax */}
+            <div style={{ 
+                position: 'absolute',
+                top: 0,
+                right: '-50%',
+                width: '105%',
+                height: '150%',
+                zIndex: 0,
+                pointerEvents: 'none',
+                transform: `translateY(${scrollY * 0.1}px)`,
+                transition: 'transform 0.1s ease-out'
+            }}>
+                <OndaVector />
+            </div>
+            
+            {/* Contenido principal */}
+            <div style={{ position: 'relative', zIndex: 1 }}>
             {carritos.map(carrito => (
                 <div key={carrito.id}>
                     <div className="position-relative mb-4">
@@ -86,21 +113,18 @@ function PlazaInfoScreen() {
                                 </div>
                             </div>
                         </div>
-                        <div className="px-4 position-relative" style={{ overflow: 'hidden', minHeight: 500 }}>
-                            <div style={{ position: 'absolute', top: 0, right: 0, height: '100%', width: '70%', zIndex: 0, pointerEvents: 'none' }}>
-                                <OndaVector />
-                            </div>
+                        <div className="px-4 position-relative">
                             <div className="position-relative mb-5" style={{ zIndex: 1, marginRight: '3rem' }}>
                                 <h2 className="h3 mb-4 fw-bold" style={{ color: '#5E3827' }}>Menú</h2>
                                 {carrito.menu.map((item, index) => (
-                                    <div key={index} className="d-flex align-items-center mb-3" style={{ fontWeight: 500 }}>
+                                    <div key={index} className="d-flex align-items-centeraw mb-3" style={{ fontWeight: 500 }}>
                                         <span style={{ color: palette.marron, whiteSpace: 'nowrap' }}>{item.item}</span>
                                         <span style={{ flex: 1, borderBottom: '1.5px dotted #AC8354', margin: '0 10px' }}></span>
                                         <span style={{ color: palette.marron, whiteSpace: 'nowrap' }}>${item.precio}</span>
                                     </div>
                                 ))}
                             </div>
-                            <div className="position-relative">
+                            <div className="position-relative mb-5">
                                 <h2 className="h3 mb-4 fw-bold" style={{ color: palette.marron }}>Opiniones</h2>
                                 {carrito.opiniones.map((opinion, index) => (
                                     <div key={index} className="mb-4">
@@ -118,10 +142,27 @@ function PlazaInfoScreen() {
                                     </div>
                                 ))}
                             </div>
+                            {/* Footer tipo select redes sociales */}
+                            <div className="position-relative text-center py-5">
+                                <div style={{ transform: 'scale(0.6)', marginBottom: '2.5rem' }}>
+                                    <Logo />
+                                </div>
+                                <div style={{ maxWidth: 320, margin: '0 auto' }}>
+                                    {[{name: 'Instagram', link: '#'}, {name: 'Facebook', link: '#'}, {name: 'WhatsApp', link: '#'}].map((red, idx) => (
+                                        <div key={red.name} className="d-flex align-items-center justify-content-between mb-3 px-2" style={{ fontSize: '1.35rem', color: '#295730', fontWeight: 500, background: 'transparent', borderRadius: 10, cursor: 'pointer' }}>
+                                            <span>{red.name}</span>
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M7 10L12 15L17 10" stroke="#1A1A1A" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+                                            </svg>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             ))}
+            </div>
         </div>
     );
 }
