@@ -58,11 +58,11 @@ function PlazaInfoScreen() {
 
    const carritos = plazaData.carritos;
    return (
-      <div style={{ backgroundColor: '#F5E6D3', minHeight: '100vh', height: '100vh', overflowY: 'auto', position: 'relative' }}>
+      <div style={{ backgroundColor: '#F5E6D3', minHeight: '100vh', height: '100vh', overflowY: 'auto', position: 'relative', overflowX: 'hidden' }}>
          <div style={{
             position: 'absolute',
             top: 0,
-            right: '6%',
+            right: '8%',
             width: '50%',
             height: '50%',
             zIndex: 0,
