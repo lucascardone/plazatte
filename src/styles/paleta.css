@@ -48,3 +48,73 @@ html, body {
 .btn-dorado {
     background-color: var(--dorado);
 }
+
+.vector {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+@font-face {
+  font-family: 'TT Chocolates';
+  src: url('../assets/fonts/TT Chocolates Trial Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'TT Chocolates';
+  src: url('../assets/fonts/TT Chocolates Trial Bold italic.otf') format('opentype');
+  font-weight: bold;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'TT Chocolates';
+  src: url('../assets/fonts/TT Chocolates Trial DemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'TT Chocolates';
+  src: url('../assets/fonts/TT Chocolates Trial DemiBold Italic.otf') format('opentype');
+  font-weight: 600;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'TT Chocolates';
+  src: url('../assets/fonts/TT Chocolates Trial ExtraBold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'TT Chocolates';
+  src: url('../assets/fonts/TT Chocolates Trial ExtraBold Italic.otf') format('opentype');
+  font-weight: 800;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'TT Chocolates';
+  src: url('../assets/fonts/TT Chocolates Trial Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Aplica la fuente regular a todo el sitio */
+body, html, .tt-chocolates, [class*="fw-"] {
+  font-family: 'TT Chocolates', Arial, sans-serif;
+  font-weight: normal;
+}
+
+/* Usa la variante Bold para .fw-bold y .fw-bolder */
+.fw-bold, .fw-bolder {
+  font-family: 'TT Chocolates', Arial, sans-serif;
+  font-weight: bold !important;
+}
+
+/* El resto sigue usando la regular */
+.fw-semibold,
+.fw-extrabold,
+.fw-normal, .fw-regular {
+  font-weight: normal !important;
+}

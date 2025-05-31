@@ -1,6 +1,5 @@
 import { useParams } from 'react-router-dom';
 import { palette } from '../styles/constants';
-import OndaVector from '../componentes/svgs/OndaVector';
 import Logo from '../componentes/svgs/Logo';
 
 function PlazaInfoScreen() {
@@ -51,7 +50,6 @@ function PlazaInfoScreen() {
    // Mejorar esta cochinada
    const plazaData = plazaId ? plazasInfo[plazaId as keyof typeof plazasInfo] : null;
 
-   {/* TODO alguna vista que me muestre de manera mas bonita el error */ }
    if (!plazaData) {
       return <div>Plaza no encontrada</div>;
    }
@@ -59,31 +57,26 @@ function PlazaInfoScreen() {
    const carritos = plazaData.carritos;
    return (
       <div style={{ backgroundColor: '#F5E6D3', minHeight: '100vh', height: '100vh', overflowY: 'auto', position: 'relative', overflowX: 'hidden' }}>
-         <div style={{
-            position: 'absolute',
-            top: 0,
-            right: '8%',
-            width: '50%',
-            height: '50%',
-            zIndex: 0,
-            pointerEvents: 'none',
-            transition: 'transform 0.1s ease-out'
-         }}>
-            <OndaVector />
-         </div>
          <div style={{ position: 'relative', zIndex: 1 }}>
             {carritos.map(carrito => (
                <div key={carrito.id}>
                   <div className="position-relative mb-4">
                      <div className="mb-5">
                         <div className="position-relative">
-                           {/* TODO Imagen estatica para que el contenido cuando scrolleemos haga un efecto mas copado */}
-                           <img
-                              src={carrito.imagen}
-                              alt={carrito.nombre}
-                              className="w-100"
-                              style={{ height: '300px', objectFit: 'cover' }}
-                           />
+                           <div style={{ height: '300px', position: 'relative', overflow: 'hidden' }}>
+                              <img
+                                 src={carrito.imagen}
+                                 alt={carrito.nombre}
+                                 style={{
+                                    position: 'fixed',
+                                    width: '100%',
+                                    height: '300px',
+                                    objectFit: 'cover',
+                                    left: 0,
+                                    zIndex: 0
+                                 }}
+                              />
+                           </div>
                            <div
                               className="position-absolute"
                               style={{
@@ -102,8 +95,8 @@ function PlazaInfoScreen() {
                            </div>
                         </div>
                      </div>
-                     <div className="px-4 position-relative">
-                        <div className="position-relative mb-5" style={{ zIndex: 1, marginRight: '3rem' }}>
+                     <div className="px-4 position-relative" style={{ backgroundColor: '#F5E6D3', position: 'relative', zIndex: 2, marginTop: '-2rem' }}>
+                        <div className="position-relative mb-5" style={{ marginRight: '3rem', paddingTop: '2rem' }}>
                            <h2 className="h3 mb-4 fw-bold" style={{ color: '#5E3827' }}>Menú</h2>
                            {carrito.menu.map((item, index) => (
                               <div key={index} className="d-flex align-items-centeraw mb-3" style={{ fontWeight: 500 }}>
