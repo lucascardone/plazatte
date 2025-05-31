@@ -124,7 +124,6 @@ function ExplorarScreen() {
          <div style={{
             height: '100vh',
             width: '100%',
-            marginTop: 'calc(8rem + 3.5rem)' // (header height + padding) + (selector height)
          }}>
             <PlazaMap selectedPlaza={selectedPlaza} />
          </div>
