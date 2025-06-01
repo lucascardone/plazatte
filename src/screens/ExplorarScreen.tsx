@@ -98,7 +98,7 @@ function ExplorarScreen() {
                         zIndex: 998
                      }}
                   >
-                     {plazas.map(plaza => (
+                     {plazas.filter(plaza => plaza.id !== selectedPlaza.id).map(plaza => (
                         <button
                            key={plaza.id}
                            className="btn w-100 text-start"
