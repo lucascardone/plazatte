@@ -21,7 +21,7 @@ function HomeScreen() {
          <div className="mb-4">
             <Logo />
          </div>
-         <p className="mt-3 mb-5 fs-5 fw-medium">
+         <p className="mt-3 mb-5 fs-5 fw-medium" style={{ lineHeight: "1.3" }}>
             Encuentra carritos de café<br />
             locales y explora lo que ofrecen
          </p>

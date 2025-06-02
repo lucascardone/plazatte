@@ -46,10 +46,10 @@ function LoginCarritoScreen() {
          <div
             className="p-4 text-center"
             style={{
-               height: '90vh',
-               width: '90%',
+               height: '85vh',
+               width: '85%',
                maxWidth: '400px',
-               backgroundColor: 'rgba(251, 242, 231, 0.9)', // crema translúcido
+               backgroundColor: 'rgba(251, 242, 231, 0.8)', // crema translúcido
                overflowY: 'hidden',
                maxHeight: 'calc(var(--vh, 1vh) * 90)'
             }}
@@ -57,21 +57,21 @@ function LoginCarritoScreen() {
             <h1 className="text-marron fw-bold" style={{ marginTop: '2rem', marginBottom: '2rem' }}>Registra tu carrito</h1>
             <LoginSvg />
             <form style={{ marginTop: '3.5rem' }}>
-               <div className="mb-3 text-start">
+               <div className="mb-3 text-start" style={{ width: '90%', alignContent: 'center', margin: '0 auto' }}>
                   <CustomTextField
                      label="Nombre"
                      value={formData.nombre}
                      onChange={(e) => handleInputChange('nombre', e.target.value)}
                   />
                </div>
-               <div className="mb-3 text-start">
+               <div className="mb-3 text-start" style={{ width: '90%', alignContent: 'center', margin: '0 auto' }}>
                   <CustomTextField
                      label="Email"
                      value={formData.email}
                      onChange={(e) => handleInputChange('email', e.target.value)}
                   />
                </div>
-               <div className="mb-4 text-start">
+               <div className="mb-4 text-start" style={{ width: '90%', alignContent: 'center', margin: '0 auto' }}>
                   <CustomTextField
                      label="Teléfono"
                      value={formData.telefono}

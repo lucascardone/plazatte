@@ -39,7 +39,7 @@ function PlazaInfoScreen() {
                ],
                opiniones: [
                   { nombre: "María", comentario: "Excelente café", estrellas: 5 },
-                  { nombre: "Juan", comentario: "Muy rico todo", estrellas: 5 }
+                  { nombre: "Juan", comentario: "Muy rico todo", estrellas: 4 },
                ],
                imagen: "/plaza_italia.jpg"
             }
