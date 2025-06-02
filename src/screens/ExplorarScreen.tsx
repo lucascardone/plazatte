@@ -49,7 +49,7 @@ function ExplorarScreen() {
                padding: '2rem'
             }}
          >
-            <h1 className="text-white mb-0 text-center">{selectedPlaza.nombre}</h1>
+            <h1 className="text-white mb-0 text-center fw-bold">{selectedPlaza.nombre}</h1>
          </div>
          <div
             style={{
@@ -130,7 +130,7 @@ function ExplorarScreen() {
 
          {/* Botón flotante inferior */}
          <button
-            className="btn position-fixed bottom-0 start-50 translate-middle-x px-4 py-3 text-white"
+            className="btn position-fixed bottom-0 start-50 translate-middle-x px-4 py-3 text-white fw-bold"
             style={{
                backgroundColor: palette.verde,
                borderRadius: '50px',

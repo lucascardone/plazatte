@@ -35,7 +35,7 @@ function HomeScreen() {
             ¿Tenés un carrito?{" "}
             <a
                href="#"
-               className="text-rojo fw-bold text-decoration-none"
+               className="text-rojo fw-bolder text-decoration-none"
                onClick={(e) => {
                   e.preventDefault();
                   navigate("/registrar");

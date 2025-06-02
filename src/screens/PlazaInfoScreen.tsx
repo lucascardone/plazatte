@@ -16,11 +16,15 @@ function PlazaInfoScreen() {
                menu: [
                   { item: "Café Expresso", precio: 1000 },
                   { item: "Latte", precio: 900 },
-                  { item: "Croissant", precio: 800 }
+                  { item: "Croissant", precio: 800 },
+                  { item: "Café con Leche", precio: 950 },
+                  { item: "Submarino", precio: 1200 }
                ],
                opiniones: [
-                  { nombre: "Ana", comentario: "Muy lindo", estrellas: 5 },
-                  { nombre: "Luis", comentario: "Buen servicio", estrellas: 4 }
+                  { nombre: "Ana", comentario: "Genial! Muy rico el café", estrellas: 5 },
+                  { nombre: "Luis", comentario: "Buen servicio", estrellas: 4 },
+                  { nombre: "Sofia", comentario: "Estaba frio", estrellas: 2 },
+                  { nombre: "Andres", comentario: "Muy amables", estrellas: 4 },
                ],
                imagen: "/plaza_españa.jpg"
             }
@@ -35,11 +39,15 @@ function PlazaInfoScreen() {
                menu: [
                   { item: "Café Americano", precio: 900 },
                   { item: "Cappuccino", precio: 1100 },
-                  { item: "Medialuna", precio: 700 }
+                  { item: "Brownie", precio: 700 },
+                  { item: "Té Chai", precio: 950 },
+                  { item: "Café con Leche", precio: 1000 }
                ],
                opiniones: [
                   { nombre: "María", comentario: "Excelente café", estrellas: 5 },
                   { nombre: "Juan", comentario: "Muy rico todo", estrellas: 4 },
+                  { nombre: "Bruno", comentario: "Estaba bueno", estrellas: 3 },
+                  { nombre: "Lucas", comentario: "Muy bueno el Cappuccino", estrellas: 4 },
                ],
                imagen: "/plaza_italia.jpg"
             }
@@ -97,7 +105,7 @@ function PlazaInfoScreen() {
                      </div>
                      <div className="px-4 position-relative" style={{ backgroundColor: '#F5E6D3', position: 'relative', zIndex: 2, marginTop: '-2rem' }}>
                         <div className="position-relative mb-5" style={{ marginRight: '3rem', paddingTop: '2rem' }}>
-                           <h2 className="h3 mb-4 fw-bold" style={{ color: '#5E3827' }}>Menú</h2>
+                           <h2 className="h3 mb-4 fw-bolder" style={{ color: '#5E3827' }}>Menú</h2>
                            {carrito.menu.map((item, index) => (
                               <div key={index} className="d-flex align-items-centeraw mb-3" style={{ fontWeight: 500 }}>
                                  <span style={{ color: palette.marron, whiteSpace: 'nowrap' }}>{item.item}</span>
@@ -106,8 +114,8 @@ function PlazaInfoScreen() {
                               </div>
                            ))}
                         </div>
-                        <div className="position-relative mb-5">
-                           <h2 className="h3 mb-4 fw-bold" style={{ color: palette.marron }}>Opiniones</h2>
+                        <div className="position-relative mb-5" style={{ paddingTop: '2rem' }}>
+                           <h2 className="h3 mb-4 fw-bolder" style={{ color: palette.marron }}>Opiniones</h2>
                            {carrito.opiniones.map((opinion, index) => (
                               <div key={index} className="mb-4">
                                  <div className="d-flex justify-content-between align-items-start mb-1">
