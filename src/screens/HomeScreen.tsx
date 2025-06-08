@@ -47,7 +47,13 @@ function HomeScreen() {
          </p>
          <div className="position-absolute bottom-0">
             <LoginSvg width={45} strokeWidth={6} />
-            <a className="fw-medium text-decoration-none text-marron" style={{ marginLeft: '10px' }}> Cambiar a administrador </a>
+            <a className="fw-medium text-decoration-none text-marron" style={{ marginLeft: '10px' }}
+               onClick={(e) => {
+                  e.preventDefault();
+                  navigate("/admin");
+               }}>
+               Cambiar a administrador
+            </a>
          </div>
       </div>
    );

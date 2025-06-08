@@ -5,6 +5,7 @@ import './styles/paleta.css';
 import HomeScreen from "./screens/HomeScreen";
 import ExplorarScreen from "./screens/ExplorarScreen";
 import PlazaInfoScreen from "./screens/PlazaInfoScreen";
+import AdminScreen from "./screens/AdminScreen";
 
 function App() {
    return (
@@ -14,6 +15,7 @@ function App() {
             <Route path="/registrar" element={<LoginCarritoScreen />} />
             <Route path="/explorar" element={<ExplorarScreen />} />
             <Route path="/plaza/:plazaId/info" element={<PlazaInfoScreen />} />
+            <Route path="/admin" element={<AdminScreen />} />
          </Routes>
       </BrowserRouter>
    );
