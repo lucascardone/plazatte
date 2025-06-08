@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../componentes/svgs/Logo";
+import LoginSvg from "../componentes/svgs/LoginSvg";
 
 function HomeScreen() {
    const navigate = useNavigate();
@@ -44,6 +45,10 @@ function HomeScreen() {
                Registralo
             </a>
          </p>
+         <div className="position-absolute bottom-0">
+            <LoginSvg width={45} strokeWidth={6} />
+            <a className="fw-medium text-decoration-none text-marron" style={{ marginLeft: '10px' }}> Cambiar a administrador </a>
+         </div>
       </div>
    );
 }
