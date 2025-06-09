@@ -1,9 +1,14 @@
 import LoginSvg from "../componentes/svgs/LoginSvg";
 import '../styles/paleta.css';
 import CustomTextField from "../componentes/CustomTextField";
+import SuccessModal from "../componentes/SuccessModal";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function LoginCarritoScreen() {
+   const navigate = useNavigate();
+   const [showModal, setShowModal] = useState(false);
+
    useEffect(() => {
       const setVh = () => {
          const vh = window.innerHeight * 0.01;
@@ -33,71 +38,88 @@ function LoginCarritoScreen() {
       }));
    };
 
+   const handleSubmit = (e: React.FormEvent) => {
+      e.preventDefault();
+      if (isFormComplete()) {
+         setShowModal(true);
+      }
+   };
+
+   const handleCloseModal = () => {
+      setShowModal(false);
+      navigate('/');
+   };
+
    return (
-      <div
-         className="d-flex justify-content-center align-items-center"
-         style={{
-            backgroundImage: `url('/plaza_españa.jpg')`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            height: 'calc(var(--vh, 1vh) * 100)',
-         }}
-      >
+      <>
+         <SuccessModal show={showModal} onClose={handleCloseModal} />
          <div
-            className="p-4 text-center"
+            className="d-flex justify-content-center align-items-center"
             style={{
-               height: '85vh',
-               width: '85%',
-               maxWidth: '400px',
-               backgroundColor: 'rgba(251, 242, 231, 0.8)', // crema translúcido
-               overflowY: 'hidden',
-               maxHeight: 'calc(var(--vh, 1vh) * 90)'
+               backgroundImage: `url('/plaza_españa.jpg')`,
+               backgroundSize: 'cover',
+               backgroundPosition: 'center',
+               height: 'calc(var(--vh, 1vh) * 100)',
             }}
          >
-            <h1 className="text-marron fw-bold" style={{ marginTop: '2rem', marginBottom: '2rem' }}>Registra tu carrito</h1>
-            <LoginSvg />
-            <form style={{ marginTop: '3.5rem' }}>
-               <div className="mb-3 text-start" style={{ width: '90%', alignContent: 'center', margin: '0 auto' }}>
-                  <CustomTextField
-                     label="Nombre"
-                     value={formData.nombre}
-                     onChange={(e) => handleInputChange('nombre', e.target.value)}
-                  />
-               </div>
-               <div className="mb-3 text-start" style={{ width: '90%', alignContent: 'center', margin: '0 auto' }}>
-                  <CustomTextField
-                     label="Email"
-                     value={formData.email}
-                     onChange={(e) => handleInputChange('email', e.target.value)}
-                  />
-               </div>
-               <div className="mb-4 text-start" style={{ width: '90%', alignContent: 'center', margin: '0 auto' }}>
-                  <CustomTextField
-                     label="Teléfono"
-                     value={formData.telefono}
-                     onChange={(e) => handleInputChange('telefono', e.target.value)}
-                  />
-               </div>
-               <button
-                  type="submit"
-                  className="btn rounded-pill px-4 py-3 w-50 fw-bold"
+            {!showModal && (
+               <div
+                  className="p-4 text-center"
                   style={{
-                     marginTop: '4rem',
-                     backgroundColor: 'transparent',
-                     color: '#AC8354',
-                     border: '4px solid #AC8354',
-                     transition: 'all 0.3s ease',
-                     ...(isFormComplete() && {
-                        backgroundColor: '#AC8354',
-                        color: 'white'
-                     })
+                     height: '85vh',
+                     width: '85%',
+                     maxWidth: '400px',
+                     backgroundColor: 'rgba(251, 242, 231, 0.8)',
+                     overflowY: 'hidden',
+                     maxHeight: 'calc(var(--vh, 1vh) * 90)'
                   }}
                >
-                  Enviar
-               </button>
-            </form>
+                  <h1 className="text-marron fw-bold" style={{ marginTop: '2rem', marginBottom: '2rem' }}>Registra tu carrito</h1>
+                  <LoginSvg />
+                  <form style={{ marginTop: '3.5rem' }} onSubmit={handleSubmit}>
+                     <div className="mb-3 text-start" style={{ width: '90%', alignContent: 'center', margin: '0 auto' }}>
+                        <CustomTextField
+                           label="Nombre"
+                           value={formData.nombre}
+                           onChange={(e) => handleInputChange('nombre', e.target.value)}
+                        />
+                     </div>
+                     <div className="mb-3 text-start" style={{ width: '90%', alignContent: 'center', margin: '0 auto' }}>
+                        <CustomTextField
+                           label="Email"
+                           value={formData.email}
+                           onChange={(e) => handleInputChange('email', e.target.value)}
+                        />
+                     </div>
+                     <div className="mb-4 text-start" style={{ width: '90%', alignContent: 'center', margin: '0 auto' }}>
+                        <CustomTextField
+                           label="Teléfono"
+                           value={formData.telefono}
+                           onChange={(e) => handleInputChange('telefono', e.target.value)}
+                        />
+                     </div>
+                     <button
+                        type="submit"
+                        className="btn rounded-pill px-4 py-3 w-50 fw-bold"
+                        style={{
+                           marginTop: '4rem',
+                           backgroundColor: 'transparent',
+                           color: '#AC8354',
+                           border: '4px solid #AC8354',
+                           transition: 'all 0.3s ease',
+                           ...(isFormComplete() && {
+                              backgroundColor: '#AC8354',
+                              color: 'white'
+                           })
+                        }}
+                     >
+                        Enviar
+                     </button>
+                  </form>
+               </div>
+            )}
          </div>
-      </div>
+      </>
    );
 }
 
