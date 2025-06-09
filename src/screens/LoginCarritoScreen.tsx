@@ -46,8 +46,12 @@ function LoginCarritoScreen() {
    };
 
    const handleCloseModal = () => {
+      // En lugar de navegar directamente, primero cerramos el modal
       setShowModal(false);
-      navigate('/');
+      // Pequeño delay para asegurar que la transición sea suave
+      setTimeout(() => {
+         navigate('/');
+      }, 100);
    };
 
    return (
