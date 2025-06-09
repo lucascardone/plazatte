@@ -1,5 +1,3 @@
-import { palette } from "../styles/constants";
-
 type SuccessModalProps = {
    onClose: () => void;
    show: boolean;
