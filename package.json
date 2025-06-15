@@ -14,6 +14,7 @@
     "@emotion/styled": "^11.14.0",
     "@mui/material": "^7.1.0",
     "@types/leaflet": "^1.9.18",
+    "framer-motion": "^12.18.1",
     "json-server": "^1.0.0-beta.3",
     "leaflet": "^1.9.4",
     "react": "^19.1.0",

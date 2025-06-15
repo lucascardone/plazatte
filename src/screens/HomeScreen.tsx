@@ -29,21 +29,21 @@ function HomeScreen() {
             <div className="mb-4">
                <Logo />
             </div>
-            <p className="mt-3 mb-5 fs-5 fw-medium" style={{ lineHeight: "1.3" }}>
+            <p className="mt-3 mb-5 fs-5 text-marron fw-medium" style={{ lineHeight: "1.3" }}>
                Encuentra carritos de café<br />
                locales y explora lo que ofrecen
             </p>
             <button
-               className="btn btn-rojo fs-5 fw-bold p-3 mt-5 mb-3 w-100" style={{ borderRadius: "13px" }}
+               className="btn btn-rojo fs-5 fw-bold p-3 mt-3 mb-3 w-100 rounded-pill" style={{ borderRadius: "13px" }}
                onClick={() => navigate("/explorar")}
             >
                Explora carritos cercanos a ti
             </button>
-            <p className="fs-6">
+            <p className="fs-6 text-marron">
                ¿Tenés un carrito?{" "}
                <a
                   href="#"
-                  className="text-rojo fw-bolder text-decoration-none"
+                  className="text-rojo fw-medium text-decoration-none"
                   onClick={(e) => {
                      e.preventDefault();
                      navigate("/registrar");
@@ -52,7 +52,7 @@ function HomeScreen() {
                   Registralo
                </a>
             </p>
-            <div className="position-absolute bottom-0">
+            <div className="position-absolute" style={{ bottom: '1.5rem' }}>
                <LoginSvg width={45} strokeWidth={6} />
                <a className="fw-medium text-decoration-none text-marron" style={{ marginLeft: '10px' }}
                   onClick={(e) => {
