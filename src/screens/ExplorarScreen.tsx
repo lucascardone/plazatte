@@ -10,6 +10,10 @@ interface Plaza {
       lat: number;
       lng: number;
    };
+   carritos: {
+      nombre: string;
+      horario: string;
+   }[];
 }
 
 const plazas: Plaza[] = [
@@ -19,7 +23,13 @@ const plazas: Plaza[] = [
       coordenadas: {
          lat: -32.891649,
          lng: -68.848619
-      }
+      },
+      carritos: [
+         {
+            nombre: "Dulce Café",
+            horario: "8:00 AM a 8:00 PM"
+         }
+      ]
    },
    {
       id: 'españa',
@@ -27,7 +37,55 @@ const plazas: Plaza[] = [
       coordenadas: {
          lat: -32.893065,
          lng: -68.842307
-      }
+      },
+      carritos: [
+         {
+            nombre: "Café Aróma",
+            horario: "7:00 AM a 7:00 PM"
+         }
+      ]
+   },
+   {
+      id: 'independencia',
+      nombre: 'Plaza Independencia',
+      coordenadas: {
+         lat: -32.890037,
+         lng: -68.845426
+      },
+      carritos: [
+         {
+            nombre: "Café Central",
+            horario: "9:00 AM a 9:00 PM"
+         }
+      ]
+   },
+   {
+      id: 'chile',
+      nombre: 'Plaza Chile',
+      coordenadas: {
+         lat: -32.886398,
+         lng: -68.847004
+      },
+      carritos: [
+         {
+            nombre: "Chilensis Café",
+            horario: "8:30 AM a 8:30 PM"
+         }
+      ]
+   },
+   {
+      id: 'sanmartin',
+      nombre: 'Plaza San Martín',
+      coordenadas: {
+         lat: -32.887297,
+         lng: -68.840641
+      },
+      carritos: [
+         {
+            nombre: "San Martín Café",
+            horario: "7:30 AM a 8:00 PM"
+         }
+      ]
    }
 ];
 

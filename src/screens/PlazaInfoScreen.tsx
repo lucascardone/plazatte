@@ -52,6 +52,75 @@ function PlazaInfoScreen() {
                imagen: "/plaza_italia.jpg"
             }
          ]
+      },
+      'independencia': {
+         carritos: [
+            {
+               id: 1,
+               nombre: "Café Central",
+               horario: "9:00 AM a 9:00 PM",
+               menu: [
+                  { item: "Flat White", precio: 1100 },
+                  { item: "Medialuna", precio: 700 },
+                  { item: "Café Doble", precio: 1200 },
+                  { item: "Tostado", precio: 950 },
+                  { item: "Limonada", precio: 800 }
+               ],
+               opiniones: [
+                  { nombre: "Pedro", comentario: "El mejor café de la plaza", estrellas: 5 },
+                  { nombre: "Lucía", comentario: "Muy buena atención", estrellas: 4 },
+                  { nombre: "Carlos", comentario: "Rápido y rico", estrellas: 5 },
+                  { nombre: "Valen", comentario: "Me encantó el Flat White", estrellas: 5 },
+               ],
+               imagen: "/plaza_independencia.jpg"
+            }
+         ]
+      },
+      'chile': {
+         carritos: [
+            {
+               id: 1,
+               nombre: "Chilensis Café",
+               horario: "8:30 AM a 8:30 PM",
+               menu: [
+                  { item: "Café Cortado", precio: 950 },
+                  { item: "Torta de Chocolate", precio: 1200 },
+                  { item: "Té Verde", precio: 800 },
+                  { item: "Sandwich Veggie", precio: 1100 },
+                  { item: "Café Helado", precio: 1000 }
+               ],
+               opiniones: [
+                  { nombre: "Santi", comentario: "Muy buena onda!", estrellas: 5 },
+                  { nombre: "Flor", comentario: "El café helado es lo más", estrellas: 5 },
+                  { nombre: "Martina", comentario: "Riquísima la torta", estrellas: 4 },
+                  { nombre: "Julián", comentario: "Volvería sin dudas", estrellas: 5 },
+               ],
+               imagen: "/plaza_chile.jpg"
+            }
+         ]
+      },
+      'sanmartin': {
+         carritos: [
+            {
+               id: 1,
+               nombre: "San Martín Café",
+               horario: "7:30 AM a 8:00 PM",
+               menu: [
+                  { item: "Café Latte", precio: 950 },
+                  { item: "Budín de Limón", precio: 850 },
+                  { item: "Espresso", precio: 900 },
+                  { item: "Tostado de Jamón y Queso", precio: 1100 },
+                  { item: "Jugo de Naranja", precio: 700 }
+               ],
+               opiniones: [
+                  { nombre: "Agustina", comentario: "El budín es increíble!", estrellas: 5 },
+                  { nombre: "Ramiro", comentario: "Muy buen café y atención", estrellas: 4 },
+                  { nombre: "Sole", comentario: "El lugar perfecto para la tarde", estrellas: 5 },
+                  { nombre: "Nico", comentario: "Me encantó el espresso", estrellas: 5 },
+               ],
+               imagen: "/plaza_sanmartin.jpg"
+            }
+         ]
       }
    };
 

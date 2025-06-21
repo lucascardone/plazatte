@@ -9,6 +9,10 @@ interface Plaza {
       lat: number;
       lng: number;
    };
+   carritos: {
+      nombre: string;
+      horario: string;
+   }[];
 }
 
 interface PlazaMapProps {
@@ -38,7 +42,17 @@ function PlazaMap({ selectedPlaza }: PlazaMapProps) {
          />
          <Marker position={selectedPlaza.coordenadas} icon={customIcon}>
             <Popup>
-               {selectedPlaza.nombre}
+               <div style={{
+                  padding: '0.5rem',
+                  textAlign: 'center'
+               }}>
+                  {selectedPlaza.carritos.map((carrito, index) => (
+                     <div key={index} style={{ marginBottom: index < selectedPlaza.carritos.length - 1 ? '0.5rem' : 0 }}>
+                        <div style={{ fontWeight: 'bold', color: '#5E3827' }}>{carrito.nombre}</div>
+                        <div style={{ fontSize: '0.9em', color: '#AC8354' }}>{carrito.horario}</div>
+                     </div>
+                  ))}
+               </div>
             </Popup>
          </Marker>
       </MapContainer>
