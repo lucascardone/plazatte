@@ -68,7 +68,7 @@ const plazas: Plaza[] = [
       },
       carritos: [
          {
-            nombre: "Chilensis Café",
+            nombre: "Café al paso",
             horario: "8:30 AM a 8:30 PM"
          }
       ]

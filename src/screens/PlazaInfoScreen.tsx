@@ -80,7 +80,7 @@ function PlazaInfoScreen() {
          carritos: [
             {
                id: 1,
-               nombre: "Chilensis Café",
+               nombre: "Café al paso",
                horario: "8:30 AM a 8:30 PM",
                menu: [
                   { item: "Café Cortado", precio: 950 },
